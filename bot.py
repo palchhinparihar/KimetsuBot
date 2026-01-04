@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 from main import keep_alive
 from features.character_api import get_character_info
 from utils.help_cmd_api import get_help_text as help_text
+from utils.ping import ping, welcome_message
 
 # Load environment variables
 load_dotenv()
@@ -100,7 +101,9 @@ class MyClient(discord.Client):
     elif content.startswith("$docs"):
       await message.channel.send('Demon Slayer API docs: https://www.demonslayer-api.com/docs')
     elif content.startswith(("$welcome", "$start", "$hello", "$ping")):
-      await message.channel.send('Welcome to KimetsuBot! Use `$help` to see available commands.')
+      await message.channel.send(welcome_message())
+    elif content.startswith("$ping"):
+      await message.channel.send(ping())
     else:
       return
 
