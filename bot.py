@@ -99,8 +99,8 @@ class MyClient(discord.Client):
       await message.channel.send(help_text())
     elif content.startswith("$docs"):
       await message.channel.send('Demon Slayer API docs: https://www.demonslayer-api.com/docs')
-    elif content.startswith("$welcome"):
-      await message.channel.send('Welcome to KimetsuBot! Use $help to see available commands.')
+    elif content.startswith(("$welcome", "$start", "$hello", "$ping")):
+      await message.channel.send('Welcome to KimetsuBot! Use `$help` to see available commands.')
     else:
       return
 
